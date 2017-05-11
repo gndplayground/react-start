@@ -9,7 +9,7 @@ const render = Component =>
     <AppContainer>
       <Component />
     </AppContainer>,
-    rootEl
+    rootEl,
   );
 
 render(App);

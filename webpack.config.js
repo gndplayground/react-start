@@ -33,6 +33,21 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /\.js|jsx?$/,
+        loaders: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              fix: true,
+              emitWarning: true,
+            },
+          },
+        ],
+        exclude: /node_modules/,
+        include: [path.join(__dirname, 'src')],
+      },
+      {
         test: /\.jsx?$/,
         use: [
           'babel-loader',
@@ -41,6 +56,8 @@ module.exports = {
       },
     ],
   },
+
+
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

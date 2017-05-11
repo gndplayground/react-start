@@ -1,5 +1,5 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -7,7 +7,7 @@ module.exports = {
   output: {
     filename: 'static/bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    publicPath: '/',
   },
 
   devtool: 'source-map',
@@ -17,17 +17,17 @@ module.exports = {
       {
         test: /\.jsx?$/,
         use: [
-          'babel-loader'
+          'babel-loader',
         ],
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
 
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
-      comments: false
-    })
-  ]
+      comments: false,
+    }),
+  ],
 };
