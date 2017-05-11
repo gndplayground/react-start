@@ -16,13 +16,21 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js|jsx?$/,
         use: [
           'babel-loader',
         ],
         exclude: /node_modules/,
       },
+      {
+        test: /(\.css)$/,
+        use: ['style-loader', 'css-loader?sourceMap&modules=true&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:8]', 'postcss-loader'],
+      },
     ],
+  },
+
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
 
   plugins: [
