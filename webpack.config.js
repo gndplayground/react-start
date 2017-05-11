@@ -1,5 +1,6 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -24,7 +25,7 @@ module.exports = {
 
     path: path.resolve(__dirname, 'dist'),
 
-    publicPath: '/static/'
+    publicPath: '/',
     // necessary for HMR to know where to load the hot update chunks
   },
 
@@ -58,10 +59,13 @@ module.exports = {
   },
 
 
-
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     // enable HMR globally
+
+    new HtmlWebpackPlugin({
+      template: './index.html',
+    }),
 
     new webpack.NamedModulesPlugin(),
     // prints more readable module names in the browser console on HMR updates

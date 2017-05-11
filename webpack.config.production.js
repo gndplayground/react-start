@@ -1,11 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
 
   output: {
-    filename: 'static/bundle.js',
+    filename: 'static/bundle-[hash].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
@@ -25,6 +26,9 @@ module.exports = {
   },
 
   plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html',
+    }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       comments: false,
