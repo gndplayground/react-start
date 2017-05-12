@@ -14,7 +14,7 @@ module.exports = {
     'webpack/hot/only-dev-server',
     // bundle the client for hot reloading
     // only- means to only hot reload for successful updates
-
+    'babel-polyfill',
     './src/index.js',
     // the entry point of our app
   ],
