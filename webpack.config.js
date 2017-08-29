@@ -2,12 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const PORT = 3333;
 module.exports = {
   entry: [
     'react-hot-loader/patch',
     // activate HMR for React
 
-    'webpack-dev-server/client?http://localhost:3000',
+    `webpack-dev-server/client?http://localhost:${PORT}`,
     // bundle the client for webpack-dev-server
     // and connect to the provided endpoint
 
@@ -59,6 +60,18 @@ module.exports = {
         test: /(\.css)$/,
         use: ['style-loader', 'css-loader?sourceMap&modules=true&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:8]', 'postcss-loader'],
       },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        loaders: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1,
+              name: 'img/[name].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
 
@@ -83,7 +96,7 @@ module.exports = {
 
   devServer: {
     host: 'localhost',
-    port: 3000,
+    port: PORT,
 
     historyApiFallback: true,
     // respond to 404s with index.html

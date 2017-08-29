@@ -29,6 +29,18 @@ module.exports = {
         test: /(\.css)$/,
         use: ['style-loader', 'css-loader?sourceMap&modules=true&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:8]', 'postcss-loader'],
       },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        loaders: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1,
+              name: 'img/[name]-[hash].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
 

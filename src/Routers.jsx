@@ -12,25 +12,25 @@ import PageLoading from './components/PageLoading';
 
 const LoadableHome = Loadable({
   loader: () => import('./pages/Home'),
-  LoadingComponent: PageLoading,
+  loading: PageLoading,
   delay: 200,
 });
 
 const LoadableAbout = Loadable({
   loader: () => import('./pages/About'),
-  LoadingComponent: PageLoading,
+  loading: PageLoading,
   delay: 200,
 });
 
 const LoadableLogin = Loadable({
   loader: () => import('./pages/Login'),
-  LoadingComponent: PageLoading,
+  loading: PageLoading,
   delay: 200,
 });
 
 const LoadablePrivate = Loadable({
   loader: () => import('./pages/Private'),
-  LoadingComponent: PageLoading,
+  loading: PageLoading,
   delay: 200,
 });
 

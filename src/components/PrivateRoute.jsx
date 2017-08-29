@@ -5,21 +5,22 @@ import { Route, Redirect } from 'react-router-dom';
 // Handler access to a route
 const PrivateRoute = ({ component: Component, user, ...rest }) => (
   <Route
-    {...rest} render={
-    (props) => {
-      if (user && user.user) {
-        return <Component {...props} />;
+    {...rest}
+    render={
+      (props) => {
+        if (user && user.user) {
+          return <Component {...props} />;
+        }
+        return (
+          <Redirect
+            to={{
+              pathname: '/login',
+              state: { from: props.location },
+            }}
+          />
+        );
       }
-      return (
-        <Redirect
-          to={{
-            pathname: '/login',
-            state: { from: props.location },
-          }}
-        />
-      );
     }
-  }
   />
 );
 
